@@ -6,7 +6,6 @@ async function getCatImage(numberOfCats, swapDirection) {
         if (imageUrl === response.url) {
             i--;
             imageUrl = "";
-            console.log(i);
         } else {
             imageUrl = response.url;
             img.src = imageUrl;
