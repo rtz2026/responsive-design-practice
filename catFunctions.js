@@ -9,19 +9,25 @@ async function getCatImage(numberOfCats, swapDirection) {
         } else {
             imageUrl = response.url;
             img.src = imageUrl;
-            if (swapDirection) {
-                document.querySelector("#container").style.flexDirection = "row-reverse";
-                }
-
             document.querySelector("#container").appendChild(img);
         };
     }
 }
 
+function swapDirection(swapDirection) {
+    document.querySelector("#swapDirection").addEventListener("click", () => {
+        if (swapDirection.target.checked) {
+                document.querySelector("#container").style.flexDirection = "row-reverse";
+                } else {
+                    document.querySelector("#container").style.flexDirection = "row";
+                }
+            }
+        );
+    }
+
 function buttonClick() {
     document.querySelector("button").addEventListener("click", () => {
         const numberOfCats = document.getElementById("catNumber").value;
-        const swapDirection = document.getElementById("swapDirection").checked;
         if (numberOfCats > 0 && numberOfCats <= 10) {
             getCatImage(numberOfCats, swapDirection);
         }
@@ -29,3 +35,4 @@ function buttonClick() {
 }
 
 window.addEventListener("load", buttonClick);
+window.addEventListener("click", swapDirection);
